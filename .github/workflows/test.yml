@@ -23,12 +23,12 @@ jobs:
   build:
     name: Build REG-Linux for CHA
     runs-on: ubuntu-latest
-    container: 
-      image: arm32v7/ubuntu:latest
-      options: --platform=linux/armhf
     steps:
-      - name: TEST
-        id: TEST
-        shell: bash
-        run: |
-          uname -a
+    - uses: pguyot/arm-runner-action@v2
+      with:
+        base_image: raspios_lite:latest
+        cpu_info: raspberrypi_3b
+        commands: |
+            uname -a
+            echo "grep Model /proc/cpuinfo:"
+            grep Model /proc/cpuinfo
