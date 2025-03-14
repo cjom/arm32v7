@@ -24,7 +24,7 @@ jobs:
     name: Build REG-Linux for CHA
     runs-on: ubuntu-latest
     container: 
-      image: onlinelabs/ubuntu:trusty
+      image: arm32v7/ubuntu:latest
       options: --platform=linux/armhf
     steps:
       - name: TEST
