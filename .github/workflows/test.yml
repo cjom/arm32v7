@@ -21,13 +21,15 @@ env:
 
 jobs:
   build:
-    name: Build REG-Linux for CHA
+    name: TEST
     runs-on: ubuntu-latest
     steps:
-    - uses: pguyot/arm-runner-action@v2
+    - uses: pguyot/arm-runner-action@v2.6.5
       with:
         base_image: raspios_lite:latest
+        cpu: cortex-a7
         cpu_info: raspberrypi_3b
+        shell: /bin/bash
         commands: |
             uname -a
             echo "grep Model /proc/cpuinfo:"
