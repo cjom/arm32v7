@@ -33,7 +33,7 @@ jobs:
             rm -rf .git .github
             CUSTOM_DIR=${PWD}/custom BUILDROOT_DIR=${PWD}/buildroot bash ${PWD}/scripts/linux/mergeToBR.sh
             sed -i "/HOST_RUST_BIN_PROVIDES/d" buildroot/package/rust-bin/rust-bin.mk
-            sed -i "s/ glm//" package/batocera/emulators/solarus-engine/solarus-engine.mk
+            sed -i "s/ reglinux-luajit glm//" package/batocera/emulators/solarus-engine/solarus-engine.mk
             sed -i "s/ physfs//" package/batocera/emulators/solarus-engine/solarus-engine.mk
             # After each package is compiled and installed, delete build folder
             # Some files need to be preserved or renamed to avoid errors
