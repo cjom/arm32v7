@@ -32,6 +32,7 @@ jobs:
             git submodule update
             rm -rf .git .github
             CUSTOM_DIR=${PWD}/custom BUILDROOT_DIR=${PWD}/buildroot bash ${PWD}/scripts/linux/mergeToBR.sh
+            sed -i "/HOST_RUST_BIN_PROVIDES/d" buildroot/package/rust-bin/rust-bin.mk
             # After each package is compiled and installed, delete build folder
             # Some files need to be preserved or renamed to avoid errors
             sed -i '/stamp_installed\:/,/stamp_dircleaned\:/ s:^$:\tfind $(BUILD_DIR) -type f -name "libavahi-client.so.*" -execdir mv \{\} libavahi-client.so \\; \
