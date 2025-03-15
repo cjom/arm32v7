@@ -33,7 +33,7 @@ jobs:
             rm -rf .git .github
             CUSTOM_DIR=${PWD}/custom BUILDROOT_DIR=${PWD}/buildroot bash ${PWD}/scripts/linux/mergeToBR.sh
             sed -i "/HOST_RUST_BIN_PROVIDES/d" buildroot/package/rust-bin/rust-bin.mk
-            sed -i "s/select BR2_PACKAGE_GLM/depends on BR2_PACKAGE_GLM\n\tselect BR2_PACKAGE_GLM/" package/batocera/emulators/solarus-engine/solarus-engine.mk
+            sed -i "/BR2_PACKAGE_GLM/d" package/batocera/emulators/solarus-engine/solarus-engine.mk
             # After each package is compiled and installed, delete build folder
             # Some files need to be preserved or renamed to avoid errors
             sed -i '/stamp_installed\:/,/stamp_dircleaned\:/ s:^$:\tfind $(BUILD_DIR) -type f -name "libavahi-client.so.*" -execdir mv \{\} libavahi-client.so \\; \
